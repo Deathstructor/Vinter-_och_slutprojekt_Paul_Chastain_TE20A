@@ -1,17 +1,16 @@
 ﻿using Raylib_cs;
 
-Engine e = new();
 
-CreateWindow();
-Start();
+Raylib.SetTargetFPS(60);
+Raylib.InitWindow(700, 900, "Deep Scan");
 
-void CreateWindow()
+LoadScreen l = new();
+MainMenu m = new();
+
+while (l.quit == false)
 {
-    Raylib.SetTargetFPS(60);
-    Raylib.InitWindow(700, 900, "Deep Scan");
-}
-
-void Start()
-{
-    e.Run();
+    if (l.menu) { m.Menu(); }
+    if (l.start) {  }
+    if (l.htp) {  }
+    if (l.exit) {  }
 }
