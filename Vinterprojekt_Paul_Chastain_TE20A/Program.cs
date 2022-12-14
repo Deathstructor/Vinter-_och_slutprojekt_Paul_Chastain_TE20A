@@ -6,11 +6,13 @@ Raylib.InitWindow(700, 900, "Deep Scan");
 
 LoadScreen l = new();
 MainMenu m = new();
+MainGame g = new();
+HelpMenu h = new();
 
-while (l.quit == false)
+
+while (!Raylib.WindowShouldClose())
 {
     if (l.menu) { m.Menu(); }
-    if (l.start) {  }
-    if (l.htp) {  }
-    if (l.exit) {  }
+    if (l.start) { g.Game(); }
+    if (l.help) { h.HelpScreen(); }
 }

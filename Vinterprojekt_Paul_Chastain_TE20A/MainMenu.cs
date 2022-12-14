@@ -1,40 +1,44 @@
 using Raylib_cs;
 
+// Denna kod har jag återanvänt från ett gammalt projekt: https://github.com/Deathstructor/Vinterprojekt
+// Jag vet att det finns bättre och effektivare sätt att göra menyerna på, men jag vill hellre lägga mer
+// tid på själva spelet än på menyerna, så jag kanske fixar det senare om jag har tid över till det.
+
 public class MainMenu
 {
     LoadScreen l = new();
     
     protected Color startColor = Color.GREEN;
-    protected Color htpColor = Color.GREEN;
+    protected Color helpColor = Color.GREEN;
     protected Color exitColor = Color.GREEN;
     protected Color textColor = Color.WHITE;
 
-    protected Rectangle startRec = new Rectangle(Raylib.GetScreenWidth() / 2 - 100, 250, 200, 100);
-    protected Rectangle howToPlayRec = new Rectangle(Raylib.GetScreenWidth() / 2 - 100, 400, 200, 100);
-    protected Rectangle exitRec = new Rectangle(Raylib.GetScreenWidth() / 2 - 100, 550, 200, 100);
+    protected Rectangle startRec = new Rectangle(Raylib.GetScreenWidth() / 2 - 100, 300, 200, 100);
+    protected Rectangle helpRec = new Rectangle(Raylib.GetScreenWidth() / 2 - 100, 450, 200, 100);
+    protected Rectangle exitRec = new Rectangle(Raylib.GetScreenWidth() / 2 - 100, 600, 200, 100);
 
     public void Menu()
     {
-        while (!Raylib.WindowShouldClose() && l.quit == false)
+        while (!Raylib.WindowShouldClose() && l.menu == true)
         {
             Raylib.BeginDrawing();
 
             Raylib.ClearBackground(Color.SKYBLUE);
-            Raylib.DrawText("Deep Scan", Raylib.GetScreenWidth() / 2 - 80, 225, 100, Color.RED);
+            Raylib.DrawText("Deep Scan", Raylib.GetScreenWidth() / 2 - 260, 125, 100, Color.RED);
 
             Raylib.DrawRectangleRec(startRec, startColor);
-            Raylib.DrawText("Start", Raylib.GetScreenWidth() / 2 - 80, 375, 50, textColor);
+            Raylib.DrawText("Start", Raylib.GetScreenWidth() / 2 - 70, 325, 50, textColor);
 
-            Raylib.DrawRectangleRec(howToPlayRec, htpColor);
-            Raylib.DrawText("How to play", Raylib.GetScreenWidth() / 2 - 80, 525, 50, textColor);
+            Raylib.DrawRectangleRec(helpRec, helpColor);
+            Raylib.DrawText("Help", Raylib.GetScreenWidth() / 2 - 50, 475, 50, textColor);
 
             Raylib.DrawRectangleRec(exitRec, exitColor);
-            Raylib.DrawText("Exit", Raylib.GetScreenWidth() / 2 - 50, 525, 50, textColor);
+            Raylib.DrawText("Exit", Raylib.GetScreenWidth() / 2 - 50, 625, 50, textColor);
 
             Raylib.EndDrawing();
 
             // Kollar om muspekaren är på en knapp och ändrar färgen om den är på en knapp
-            if (Raylib.GetMouseX() >= Raylib.GetScreenWidth() / 2 - 80 && Raylib.GetMouseX() <= Raylib.GetScreenWidth() / 2 + 80 && Raylib.GetMouseY() >= 350 && Raylib.GetMouseY() <= 450)
+            if (Raylib.GetMouseX() >= Raylib.GetScreenWidth() / 2 - 100 && Raylib.GetMouseX() <= Raylib.GetScreenWidth() / 2 + 100 && Raylib.GetMouseY() >= 300 && Raylib.GetMouseY() <= 400)
             {
                 startColor = Color.DARKGREEN;
 
@@ -46,43 +50,34 @@ public class MainMenu
                     return;
                 }
             }
-            else
-            {
-                startColor = Color.BLUE;
-            }
+            else { startColor = Color.GREEN; }
 
-            if (Raylib.GetMouseX() >= Raylib.GetScreenWidth() / 2 - 160 && Raylib.GetMouseX() <= Raylib.GetScreenWidth() / 2 + 140 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 600)
+            if (Raylib.GetMouseX() >= Raylib.GetScreenWidth() / 2 - 100 && Raylib.GetMouseX() <= Raylib.GetScreenWidth() / 2 + 100 && Raylib.GetMouseY() >= 450 && Raylib.GetMouseY() <= 550)
             {
-                exitColor = Color.DARKBLUE;
+                helpColor = Color.DARKGREEN;
+
+                // Laddar in hjälp menyn där man kan hitta instruktioner för hur spelet funkar om man trycker på "help" knappen
+                if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
+                {
+                    l.help = true;
+                    l.menu = false;
+                    return;
+                }
+            }
+            else { helpColor = Color.GREEN; }
+
+            if (Raylib.GetMouseX() >= Raylib.GetScreenWidth() / 2 - 100 && Raylib.GetMouseX() <= Raylib.GetScreenWidth() / 2 + 100 && Raylib.GetMouseY() >= 600 && Raylib.GetMouseY() <= 700)
+            {
+                exitColor = Color.DARKGREEN;
 
                 // Stänger ner spelet om man trycker på "exit knappen"
                 if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
                 {
-                    l.quit = true;
-                    System.Console.WriteLine(l.quit);
+                    Raylib.CloseWindow();
                     return;
                 }
             }
-            else
-            {
-                exitColor = Color.BLUE;
-            }
+            else { exitColor = Color.GREEN; }
         }
     }
-    // protected List<(Rectangle, string)> buttons
-
-    // public void CreateButtons()
-    // {
-    //     buttons.Add(new(new(250, 300, 200, 100), "Start"));
-    //     buttons.Add(new(new(400, 300, 200, 100), "Start"));
-    //     buttons.Add(new(new(550, 300, 200, 100), "Exit"));
-    // }
-
-    // public override void MenuButtons()
-    // {
-    //     Raylib.BeginDrawing();
-    //     Raylib.ClearBackground(Color.SKYBLUE);
-    //     base.MenuButtons();
-    //     Raylib.EndDrawing();
-    // }
 }   
