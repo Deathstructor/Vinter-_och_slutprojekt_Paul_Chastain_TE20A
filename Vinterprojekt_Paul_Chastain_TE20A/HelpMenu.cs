@@ -2,14 +2,15 @@ using Raylib_cs;
 
 public class HelpMenu
 {
-    LoadScreen l = new();
-
     public void HelpScreen()
     {
-        while (!Raylib.WindowShouldClose() && l.help == true)
+        while (!Raylib.WindowShouldClose())
         {
             Raylib.BeginDrawing();
-            
+            Raylib.ClearBackground(Color.SKYBLUE);
+
+            Raylib.DrawText("Help", Raylib.GetScreenWidth() / 2 - 260, 125, 100, Color.RED);
+
             Raylib.EndDrawing();
         }
     }

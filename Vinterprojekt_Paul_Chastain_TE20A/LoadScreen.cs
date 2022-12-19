@@ -1,6 +1,6 @@
 using System;
 
-public class LoadScreen
+public abstract class LoadScreen
 {
     public bool start { get; set; } = false;
     public bool menu { get; set; } = true;

@@ -4,10 +4,8 @@ using Raylib_cs;
 // Jag vet att det finns bättre och effektivare sätt att göra menyerna på, men jag vill hellre lägga mer
 // tid på själva spelet än på menyerna, så jag kanske fixar det senare om jag har tid över till det.
 
-public class MainMenu
+public class MainMenu : LoadScreen
 {
-    LoadScreen l = new();
-    
     protected Color startColor = Color.GREEN;
     protected Color helpColor = Color.GREEN;
     protected Color exitColor = Color.GREEN;
@@ -19,7 +17,7 @@ public class MainMenu
 
     public void Menu()
     {
-        while (!Raylib.WindowShouldClose() && l.menu == true)
+        while (true)
         {
             Raylib.BeginDrawing();
 
@@ -38,35 +36,36 @@ public class MainMenu
             Raylib.EndDrawing();
 
             // Kollar om muspekaren är på en knapp och ändrar färgen om den är på en knapp
-            if (Raylib.GetMouseX() >= Raylib.GetScreenWidth() / 2 - 100 && Raylib.GetMouseX() <= Raylib.GetScreenWidth() / 2 + 100 && Raylib.GetMouseY() >= 300 && Raylib.GetMouseY() <= 400)
+            var mousePos = Raylib.GetMousePosition();
+            if (Raylib.CheckCollisionPointRec(mousePos, startRec))
             {
                 startColor = Color.DARKGREEN;
 
                 //Laddar in spelet om man klickar på "start" knappen
                 if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
                 {
-                    l.start = true;
-                    l.menu = false;
+                    start = true;
+                    menu = false;
                     return;
                 }
             }
             else { startColor = Color.GREEN; }
 
-            if (Raylib.GetMouseX() >= Raylib.GetScreenWidth() / 2 - 100 && Raylib.GetMouseX() <= Raylib.GetScreenWidth() / 2 + 100 && Raylib.GetMouseY() >= 450 && Raylib.GetMouseY() <= 550)
+            if (Raylib.CheckCollisionPointRec(mousePos, helpRec))
             {
                 helpColor = Color.DARKGREEN;
 
                 // Laddar in hjälp menyn där man kan hitta instruktioner för hur spelet funkar om man trycker på "help" knappen
                 if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
                 {
-                    l.help = true;
-                    l.menu = false;
+                    help = true;
+                    menu = false;
                     return;
                 }
             }
             else { helpColor = Color.GREEN; }
 
-            if (Raylib.GetMouseX() >= Raylib.GetScreenWidth() / 2 - 100 && Raylib.GetMouseX() <= Raylib.GetScreenWidth() / 2 + 100 && Raylib.GetMouseY() >= 600 && Raylib.GetMouseY() <= 700)
+            if (Raylib.CheckCollisionPointRec(mousePos, exitRec))
             {
                 exitColor = Color.DARKGREEN;
 
@@ -74,10 +73,9 @@ public class MainMenu
                 if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
                 {
                     Raylib.CloseWindow();
-                    return;
                 }
             }
             else { exitColor = Color.GREEN; }
         }
     }
-}   
+}
