@@ -73,6 +73,7 @@ public class MainMenu : LoadScreen
                 if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
                 {
                     Raylib.CloseWindow();
+                    return;
                 }
             }
             else { exitColor = Color.GREEN; }
