@@ -1,28 +1,36 @@
 using Raylib_cs;
 
-public class MainGame
+public class MainGame : LoadScreen
 {
     public void Game()
     {
-        Player player = new();
+        Player p = new();
+        Enemy e = new();
+        Random rdm = new Random();
 
         while (true)
         {
-            player.Movement();
+            p.Movement();
 
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Color.SKYBLUE);
             Raylib.DrawRectangle(0, 100, 700, 800, Color.DARKBLUE);
 
-            Raylib.DrawTexture(player.boat, player.playerPos, 0, Color.WHITE);
+            Raylib.DrawTexture(p.boat, p.playerPos, 0, Color.WHITE);
 
             Raylib.EndDrawing();
 
 
-            if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_LEFT))
+            if (Raylib.IsKeyPressed(KeyboardKey.KEY_ESCAPE))
             {
+                menu = true;
+                game = false;
                 return;
             }
         }
+
+
+
+
     }
 }

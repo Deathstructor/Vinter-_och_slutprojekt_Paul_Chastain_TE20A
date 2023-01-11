@@ -6,11 +6,13 @@ using Raylib_cs;
 
 public class MainMenu : LoadScreen
 {
+    // Färgerna för alla knappar och text.
     protected Color startColor = Color.GREEN;
     protected Color helpColor = Color.GREEN;
     protected Color exitColor = Color.GREEN;
     protected Color textColor = Color.WHITE;
 
+    // Skapar knapparna i huvudmeyn
     protected Rectangle startRec = new Rectangle(Raylib.GetScreenWidth() / 2 - 100, 300, 200, 100);
     protected Rectangle helpRec = new Rectangle(Raylib.GetScreenWidth() / 2 - 100, 450, 200, 100);
     protected Rectangle exitRec = new Rectangle(Raylib.GetScreenWidth() / 2 - 100, 600, 200, 100);
@@ -19,6 +21,7 @@ public class MainMenu : LoadScreen
     {
         while (true)
         {
+            // Ritar ut spelets titel, samt knapparna och texten på dem.
             Raylib.BeginDrawing();
 
             Raylib.ClearBackground(Color.SKYBLUE);
@@ -44,7 +47,7 @@ public class MainMenu : LoadScreen
                 //Laddar in spelet om man klickar på "start" knappen
                 if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
                 {
-                    start = true;
+                    game = true;
                     menu = false;
                     return;
                 }
