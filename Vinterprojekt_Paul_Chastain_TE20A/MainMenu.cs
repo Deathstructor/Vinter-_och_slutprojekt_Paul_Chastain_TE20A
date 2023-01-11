@@ -77,6 +77,7 @@ public class MainMenu : LoadScreen
                 }
             }
             else { exitColor = Color.GREEN; }
+
         }
     }
 }
