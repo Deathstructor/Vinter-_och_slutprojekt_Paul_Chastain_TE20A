@@ -6,7 +6,6 @@ public class MainGame : LoadScreen
     {
         Player p = new();
         Enemy e = new();
-        Random rdm = new Random();
 
         while (true)
         {
@@ -17,15 +16,17 @@ public class MainGame : LoadScreen
             Raylib.DrawRectangle(0, 100, 700, 800, Color.DARKBLUE);
 
             Raylib.DrawTexture(p.boat, p.playerPos, 0, Color.WHITE);
-
+            
+            e.Render();
             Raylib.EndDrawing();
 
 
             if (Raylib.IsKeyPressed(KeyboardKey.KEY_ESCAPE))
             {
-                menu = true;
-                game = false;
-                return;
+                // menu = true;
+                // game = false;
+                // return;
+                e = new();
             }
         }
 
