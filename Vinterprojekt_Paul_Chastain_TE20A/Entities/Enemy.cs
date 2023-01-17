@@ -23,6 +23,7 @@ public class Enemy
         seven = 750
     }
 
+    // X-koordinaterns som ubåtarna kan spawna på.
     public enum Side
     {
         left = -200,
@@ -65,7 +66,7 @@ public class Enemy
         Raylib.UnloadImage(submarineIMG);
     }
 
-    // Renderar ubåten
+    // Renderar ubåten och dess förflyttning.
     public void Render()
     {
         Raylib.DrawTexture(submarine, (int) sides, (int) depths, Color.WHITE);
