@@ -20,14 +20,15 @@ public class MainGame : LoadScreen
             e.Render();
             Raylib.EndDrawing();
 
+            // if (Enemy.currentAmount <  Enemy.maxAmount)
+            // {
+                
+            // }
 
-            if (Raylib.IsKeyPressed(KeyboardKey.KEY_ESCAPE))
-            {
-                // menu = true;
-                // game = false;
-                // return;
-                e = new();
-            }
+            // if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER))
+            // {
+            //     e = new();
+            // }
         }
 
 

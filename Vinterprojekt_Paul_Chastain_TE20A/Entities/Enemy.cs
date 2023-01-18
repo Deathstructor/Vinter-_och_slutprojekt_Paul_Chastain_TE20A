@@ -2,6 +2,8 @@ using Raylib_cs;
 
 public class Enemy
 {
+    public static int maxAmount { get; set; } = 3;
+    public static int currentAmount { get; set; } = 0;
     public int enemyPos { get; set; }
     public int enemySpawnSide { get; set; }
     public Depth depths { get; set; }
