@@ -7,18 +7,21 @@ public class MainGame : LoadScreen
         Player p = new();
         Enemy e = new();
 
-        List<Enemy> spawnedEnemies = new();
+        List<Enemy> spawnedEnemies = new(); // En lista med alla fiender på skärmen
 
         while (true)
         {
-            p.Movement();
+            p.Movement(); // Spelarens rörelse
 
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Color.SKYBLUE);
             Raylib.DrawRectangle(0, 100, 700, 800, Color.DARKBLUE);
 
-            Raylib.DrawTexture(p.boat, p.playerPos, 0, Color.WHITE);
+            Raylib.DrawTexture(p.boat, Player.pos, 0, Color.WHITE); // Ritar ut spelaren/båten
+            Weapon.Render();
 
+            // Kollar om antalet fiender har nått max antal fiender och lägger till fiender så
+            // länge antelet fiender inte har nått max antal fiender.
             if (Enemy.currentAmount <  Enemy.maxAmount)
             {
                 Enemy.currentAmount++;
@@ -26,6 +29,9 @@ public class MainGame : LoadScreen
                 Console.WriteLine(spawnedEnemies.Count);
             }
 
+            // Renderar varje fiende i listan med fiender och kollar var varje fiende befinner sig.
+            // Om en fiende åker för långt utaför skärmen tas den bort, vilket kommer leda till att
+            // en ny fiende skapas istället.
             if (spawnedEnemies.Count > 0) 
             {
                 spawnedEnemies[0].Render();
@@ -33,7 +39,7 @@ public class MainGame : LoadScreen
                 if (spawnedEnemies[0].pos < -210 || spawnedEnemies[0].pos > 910)
                 {
                     spawnedEnemies.RemoveAt(0);
-                    Console.WriteLine("deleted");
+                    Console.WriteLine("Deleted [0]");
                     Enemy.currentAmount--;
                 }
             }
@@ -44,7 +50,7 @@ public class MainGame : LoadScreen
                 if (spawnedEnemies[1].pos < -210 || spawnedEnemies[1].pos > 910)
                 {
                     spawnedEnemies.RemoveAt(1);
-                    Console.WriteLine(spawnedEnemies.Count);
+                    Console.WriteLine("Deleted [1]");
                     Enemy.currentAmount--;
                 }
             }
@@ -55,18 +61,12 @@ public class MainGame : LoadScreen
                 if (spawnedEnemies[2].pos < -210 || spawnedEnemies[2].pos > 910)
                 {
                     spawnedEnemies.RemoveAt(2);
-                    Console.WriteLine(spawnedEnemies.Count);
+                    Console.WriteLine("Deleted [2]");
                     Enemy.currentAmount--;
                 }
             }
             
-            
             Raylib.EndDrawing();
-
-            if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER))
-            {
-                e = new();
-            }
         }
     }
 }

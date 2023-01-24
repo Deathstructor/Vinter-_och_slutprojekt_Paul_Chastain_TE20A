@@ -2,7 +2,7 @@ using Raylib_cs;
 
 public class Player
 {
-    public int playerPos { get; set; } = Raylib.GetScreenWidth() / 2 - 50;
+    public static int pos { get; set; } = Raylib.GetScreenWidth() / 2 - 50;
     public Texture2D boat;
 
     public Player()
@@ -17,13 +17,13 @@ public class Player
     // Förflyttar spelaren till höger eller vänster beroende på om man trycker på A eller B.
     public void Movement()
     {
-        if (Raylib.IsKeyDown(KeyboardKey.KEY_A) && playerPos > 0)
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_A) && pos > 0)
         {
-            playerPos--;
+            pos--;
         }
-        if (Raylib.IsKeyDown(KeyboardKey.KEY_D) && playerPos < Raylib.GetScreenWidth() - 100)
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_D) && pos < Raylib.GetScreenWidth() - 100)
         {
-            playerPos++;
+            pos++;
         }
     }
 }
