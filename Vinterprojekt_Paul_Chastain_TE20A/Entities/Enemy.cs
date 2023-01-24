@@ -4,8 +4,8 @@ public class Enemy
 {
     public static int maxAmount { get; set; } = 3;
     public static int currentAmount { get; set; } = 0;
-    public int enemyPos { get; set; }
-    public int enemySpawnSide { get; set; }
+    public int pos { get; set; }
+    public int spawnSide { get; set; }
     public Depth depths { get; set; }
     public Side sides { get; set; }
     public bool leftSide { get; set; }
@@ -61,6 +61,7 @@ public class Enemy
             sides = Side.right;
             leftSide = false;
         }
+        pos = (int) sides;
 
         // Skapar bilden för fienderna / ubåtarna.
         Raylib.ImageResize(ref submarineIMG, 100, 100);
@@ -71,9 +72,9 @@ public class Enemy
     // Renderar ubåten och dess förflyttning.
     public void Render()
     {
-        Raylib.DrawTexture(submarine, (int) sides, (int) depths, Color.WHITE);
+        Raylib.DrawTexture(submarine, pos, (int) depths, Color.WHITE);
 
-        if (leftSide == true) sides++;
-        else if (leftSide == false) sides--;
+        if (leftSide == true) pos++;
+        else if (leftSide == false) pos--;
     }
 }
