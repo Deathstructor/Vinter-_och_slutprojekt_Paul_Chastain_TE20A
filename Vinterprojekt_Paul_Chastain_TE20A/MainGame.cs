@@ -18,7 +18,6 @@ public class MainGame : LoadScreen
             Raylib.DrawRectangle(0, 100, 700, 800, Color.DARKBLUE);
 
             Raylib.DrawTexture(p.boat, Player.pos, 0, Color.WHITE); // Ritar ut spelaren/båten
-            Weapon.Render();
 
             // Kollar om antalet fiender har nått max antal fiender och lägger till fiender så
             // länge antelet fiender inte har nått max antal fiender.
