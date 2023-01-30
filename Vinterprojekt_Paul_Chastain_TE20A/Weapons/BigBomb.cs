@@ -2,19 +2,18 @@ using Raylib_cs;
 
 public class BigBomb : Weapon
 {
-    protected BigBomb()
+    public BigBomb(int bombX)
     {
         speed = 1;
         size = 10;
-        posY = 100;
+        bombX = posX + 50;
     }
 
-    public static void Draw()
+    // Ritar ut den stora bomben
+    public override void Draw()
     {
-        Raylib.BeginDrawing();
+        base.Draw();
         Raylib.DrawCircle(Player.pos, posY, size, Color.RED);
-        Raylib.EndDrawing();
-
         posY++;
     }
 }

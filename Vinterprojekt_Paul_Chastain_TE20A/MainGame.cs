@@ -64,6 +64,9 @@ public class MainGame : LoadScreen
                     Enemy.currentAmount--;
                 }
             }
+
+            p.weapon1.Draw();
+            p.weapon2.Draw();
             
             Raylib.EndDrawing();
         }

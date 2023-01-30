@@ -29,7 +29,7 @@ public class Enemy
     public enum Side
     {
         left = -200,
-        right = 900
+        right = 800
     }
 
     public Enemy()

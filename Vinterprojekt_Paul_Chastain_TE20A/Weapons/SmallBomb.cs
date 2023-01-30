@@ -2,18 +2,18 @@ using Raylib_cs;
 
 public class SmallBomb : Weapon
 {
-    protected SmallBomb()
+    public SmallBomb(int bombX)
     {
         speed = 2;
-        size = 2;
-        posY = 100;
+        size = 4;
+        posX = bombX + 50;
     }
 
-    public static void Draw()
+    // Ritar ut den lilla bomben
+    public override void Draw()
     {
-        Raylib.BeginDrawing();
-        Raylib.DrawCircle(Player.pos, posY, size, Color.RED);
-        Raylib.EndDrawing();
+        base.Draw();
+        Raylib.DrawCircle(posX, posY, size, Color.RED);
 
         posY++;
         return;
