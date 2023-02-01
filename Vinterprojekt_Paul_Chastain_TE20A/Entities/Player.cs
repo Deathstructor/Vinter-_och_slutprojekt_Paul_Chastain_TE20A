@@ -5,8 +5,7 @@ public class Player
     public static int pos { get; set; } = Raylib.GetScreenWidth() / 2 - 50;
     public Texture2D boat;
 
-    public Weapon weapon1 = new SmallBomb(pos);
-    public Weapon weapon2 = new BigBomb(pos);
+    public Weapon weapon;
 
     public Player()
     {
@@ -36,8 +35,8 @@ public class Player
         // Ritar ut en bomb om man trycker på mellanslag.
         if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE))
         {
-            if (Weapon.isBig == false) weapon1 = new SmallBomb(pos);
-            else if (Weapon.isBig == true) weapon2 = new BigBomb(pos);
+            if (Weapon.isBig == false) weapon = new SmallBomb(pos);
+            else if (Weapon.isBig == true) weapon = new BigBomb(pos);
         }
     }
 }

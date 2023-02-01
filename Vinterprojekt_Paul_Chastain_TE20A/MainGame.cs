@@ -21,7 +21,7 @@ public class MainGame : LoadScreen
 
             // Kollar om antalet fiender har nått max antal fiender och lägger till fiender så
             // länge antelet fiender inte har nått max antal fiender.
-            if (Enemy.currentAmount <  Enemy.maxAmount)
+            if (Enemy.currentAmount < Enemy.maxAmount)
             {
                 Enemy.currentAmount++;
                 spawnedEnemies.Add(e = new());
@@ -31,7 +31,7 @@ public class MainGame : LoadScreen
             // Renderar varje fiende i listan med fiender och kollar var varje fiende befinner sig.
             // Om en fiende åker för långt utaför skärmen tas den bort, vilket kommer leda till att
             // en ny fiende skapas istället.
-            if (spawnedEnemies.Count > 0) 
+            if (spawnedEnemies.Count > 0)
             {
                 spawnedEnemies[0].Render();
 
@@ -42,7 +42,7 @@ public class MainGame : LoadScreen
                     Enemy.currentAmount--;
                 }
             }
-            if (spawnedEnemies.Count > 1) 
+            if (spawnedEnemies.Count > 1)
             {
                 spawnedEnemies[1].Render();
 
@@ -53,7 +53,7 @@ public class MainGame : LoadScreen
                     Enemy.currentAmount--;
                 }
             }
-            if (spawnedEnemies.Count > 2) 
+            if (spawnedEnemies.Count > 2)
             {
                 spawnedEnemies[2].Render();
 
@@ -65,9 +65,8 @@ public class MainGame : LoadScreen
                 }
             }
 
-            p.weapon1.Draw();
-            p.weapon2.Draw();
-            
+            if (p.weapon != null) p.weapon.Draw();
+
             Raylib.EndDrawing();
         }
     }
