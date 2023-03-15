@@ -7,6 +7,8 @@ public class Player
 
     public Weapon weapon;
 
+    List<Weapon> bombs = new();
+
     public Player()
     {
         // Skapar bilden för spelaren / båten och renderar den i spelet.
@@ -17,7 +19,8 @@ public class Player
     }
 
     // Förflyttar spelaren till höger eller vänster beroende på om man trycker på A eller D.
-    public void Movement()
+    // Skjuter även bomber om man trycker på mellanslag.
+    public void Update()
     {
         if (Raylib.IsKeyDown(KeyboardKey.KEY_A) && pos > 0)
         {
@@ -32,11 +35,25 @@ public class Player
         if (Raylib.IsKeyPressed(KeyboardKey.KEY_ONE)) Weapon.isBig = false;
         else if (Raylib.IsKeyPressed(KeyboardKey.KEY_TWO)) Weapon.isBig = true;
 
-        // Ritar ut en bomb om man trycker på mellanslag.
+        // Ritar ut en bomb om man trycker på mellanslag och lägger till den i listan "bombs".
         if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE))
         {
-            if (Weapon.isBig == false) weapon = new SmallBomb(pos);
-            else if (Weapon.isBig == true) weapon = new BigBomb(pos);
+            if (Weapon.isBig == false) 
+            {
+                bombs.Add(weapon = new SmallBomb(pos));
+            }
+            else if (Weapon.isBig == true) 
+            {
+                bombs.Add(weapon = new BigBomb(pos));
+            }
         }
+
+        // for (var i = 0; i < bombs.Count; i++)
+        // {
+        //     if (bombs[i].posY > Raylib.GetScreenHeight() + 50)
+        //     {
+        //         bombs.RemoveAt(i);
+        //     }
+        // }
     }
 }

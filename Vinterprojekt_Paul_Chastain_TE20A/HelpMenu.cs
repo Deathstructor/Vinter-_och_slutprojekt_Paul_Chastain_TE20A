@@ -23,7 +23,9 @@ public class HelpMenu
             Raylib.DrawText("Move left: A", 80, 475, 35, Color.WHITE);
             Raylib.DrawText("Move right: D", 80, 510, 35, Color.WHITE);
             Raylib.DrawText("Shoot/drop bomb: SPACE", 80, 545, 35, Color.WHITE);
-            Raylib.DrawText("Open menu: ESC", 80, 580, 35, Color.WHITE);
+            Raylib.DrawText("Back to menu: ESC", 80, 580, 35, Color.WHITE);
+            Raylib.DrawText("Select small bomb: 1", 80, 615, 35, Color.WHITE);
+            Raylib.DrawText("Select big bomb: 2", 80, 650, 35, Color.WHITE);
 
             Raylib.DrawRectangleRec(backRec, backColor);
             Raylib.DrawText("Back", 85, 810, 30, Color.WHITE);

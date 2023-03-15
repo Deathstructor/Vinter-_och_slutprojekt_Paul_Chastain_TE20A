@@ -13,7 +13,7 @@ public static class MainGame
 
         while (true)
         {
-            p.Movement(); // Spelarens rörelse
+            p.Update(); // Spelarens rörelse och bomber / vapen
 
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Color.SKYBLUE);
