@@ -29,8 +29,8 @@ public class Player
         }
 
         // Kollar om man har tryckt på 1 eller två för att välja vapen / bomb.
-        if (Raylib.IsKeyPressed(KeyboardKey.KEY_KP_1)) Weapon.isBig = false;
-        else if (Raylib.IsKeyPressed(KeyboardKey.KEY_KP_2)) Weapon.isBig = true;
+        if (Raylib.IsKeyPressed(KeyboardKey.KEY_ONE)) Weapon.isBig = false;
+        else if (Raylib.IsKeyPressed(KeyboardKey.KEY_TWO)) Weapon.isBig = true;
 
         // Ritar ut en bomb om man trycker på mellanslag.
         if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE))

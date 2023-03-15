@@ -4,20 +4,20 @@ using Raylib_cs;
 // Jag vet att det finns bättre och effektivare sätt att göra menyerna på, men jag vill hellre lägga mer
 // tid på själva spelet än på menyerna, så jag kanske fixar det senare om jag har tid över till det.
 
-public class MainMenu : LoadScreen
+public static class MainMenu
 {
     // Färgerna för alla knappar och text.
-    protected Color startColor = Color.GREEN;
-    protected Color helpColor = Color.GREEN;
-    protected Color exitColor = Color.GREEN;
-    protected Color textColor = Color.WHITE;
+    static Color startColor = Color.GREEN;
+    static Color helpColor = Color.GREEN;
+    static Color exitColor = Color.GREEN;
+    static Color textColor = Color.WHITE;
 
     // Skapar knapparna i huvudmeyn
-    protected Rectangle startRec = new Rectangle(Raylib.GetScreenWidth() / 2 - 100, 300, 200, 100);
-    protected Rectangle helpRec = new Rectangle(Raylib.GetScreenWidth() / 2 - 100, 450, 200, 100);
-    protected Rectangle exitRec = new Rectangle(Raylib.GetScreenWidth() / 2 - 100, 600, 200, 100);
+    static Rectangle startRec = new Rectangle(Raylib.GetScreenWidth() / 2 - 100, 300, 200, 100);
+    static Rectangle helpRec = new Rectangle(Raylib.GetScreenWidth() / 2 - 100, 450, 200, 100);
+    static Rectangle exitRec = new Rectangle(Raylib.GetScreenWidth() / 2 - 100, 600, 200, 100);
 
-    public void Menu()
+    public static void Menu()
     {
         while (true)
         {
@@ -47,9 +47,7 @@ public class MainMenu : LoadScreen
                 //Laddar in spelet om man klickar på "start" knappen
                 if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
                 {
-                    game = true;
-                    menu = false;
-                    return;
+                    MainGame.Game();
                 }
             }
             else { startColor = Color.GREEN; }
@@ -61,9 +59,7 @@ public class MainMenu : LoadScreen
                 // Laddar in hjälp menyn där man kan hitta instruktioner för hur spelet funkar om man trycker på "help" knappen
                 if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
                 {
-                    help = true;
-                    menu = false;
-                    return;
+                    HelpMenu.HelpScreen();
                 }
             }
             else { helpColor = Color.GREEN; }
@@ -75,7 +71,6 @@ public class MainMenu : LoadScreen
                 // Stänger ner spelet om man trycker på "exit knappen"
                 if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
                 {
-                    Raylib.CloseWindow();
                     return;
                 }
             }

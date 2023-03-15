@@ -1,11 +1,11 @@
 using Raylib_cs;
 
-public class HelpMenu : LoadScreen
+public class HelpMenu
 {
-    private Color backColor = Color.GREEN;
-    private Rectangle backRec =  new Rectangle(70, 800, 100, 50);
+    static Color backColor = Color.GREEN;
+    static Rectangle backRec =  new Rectangle(70, 800, 100, 50);
 
-    public void HelpScreen()
+    public static void HelpScreen()
     {
         while (!Raylib.WindowShouldClose())
         {
@@ -38,8 +38,6 @@ public class HelpMenu : LoadScreen
                 // Går tillbaka till huvudmenyn om man trycken på knappen
                 if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
                 {
-                    menu = true;
-                    help = false;
                     return;
                 }
             } else backColor = Color.GREEN;

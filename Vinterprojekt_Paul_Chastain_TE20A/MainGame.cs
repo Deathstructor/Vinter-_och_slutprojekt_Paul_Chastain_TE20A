@@ -1,11 +1,13 @@
 using Raylib_cs;
 
-public class MainGame : LoadScreen
+public static class MainGame
 {
-    public void Game()
+    public static void Game()
     {
         Player p = new();
         Enemy e = new();
+
+        Enemy.currentAmount = 0;
 
         List<Enemy> spawnedEnemies = new(); // En lista med alla fiender på skärmen
 
@@ -66,6 +68,11 @@ public class MainGame : LoadScreen
             }
 
             if (p.weapon != null) p.weapon.Draw();
+
+            if (Raylib.IsKeyPressed(KeyboardKey.KEY_ESCAPE))
+            {
+                return;
+            }
 
             Raylib.EndDrawing();
         }
