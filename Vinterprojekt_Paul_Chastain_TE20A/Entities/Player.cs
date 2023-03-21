@@ -2,10 +2,8 @@ using Raylib_cs;
 
 public class Player
 {
-    public static int pos { get; set; } = Raylib.GetScreenWidth() / 2 - 50;
+    public static int Pos { get; set; } = Raylib.GetScreenWidth() / 2 - 50;
     public Texture2D boat;
-
-    public Weapon weapon;
 
     List<Weapon> bombs = new();
 
@@ -22,39 +20,31 @@ public class Player
     // Skjuter även bomber om man trycker på mellanslag.
     public void Update()
     {
-        if (Raylib.IsKeyDown(KeyboardKey.KEY_A) && pos > 0)
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_A) && Pos > 0)
         {
-            pos--;
+            Pos--;
         }
-        if (Raylib.IsKeyDown(KeyboardKey.KEY_D) && pos < Raylib.GetScreenWidth() - 100)
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_D) && Pos < Raylib.GetScreenWidth() - 100)
         {
-            pos++;
+            Pos++;
         }
 
         // Kollar om man har tryckt på 1 eller två för att välja vapen / bomb.
-        if (Raylib.IsKeyPressed(KeyboardKey.KEY_ONE)) Weapon.isBig = false;
-        else if (Raylib.IsKeyPressed(KeyboardKey.KEY_TWO)) Weapon.isBig = true;
+        if (Raylib.IsKeyPressed(KeyboardKey.KEY_ONE)) Weapon.IsBig = false;
+        else if (Raylib.IsKeyPressed(KeyboardKey.KEY_TWO)) Weapon.IsBig = true;
 
         // Ritar ut en bomb om man trycker på mellanslag och lägger till den i listan "bombs".
         if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE))
         {
-            if (Weapon.isBig == false)
+            if (Weapon.IsBig == false)
             {
-                bombs.Add(new SmallBomb(pos));
+                bombs.Add(new SmallBomb(Pos));
             }
-            else if (Weapon.isBig == true)
+            else if (Weapon.IsBig == true)
             {
-                bombs.Add(new BigBomb(pos));
+                bombs.Add(new BigBomb(Pos));
             }
         }
-
-        // for (var i = 0; i < bombs.Count; i++)
-        // {
-        //     if (bombs[i].posY > Raylib.GetScreenHeight() + 50)
-        //     {
-        //         bombs.RemoveAt(i);
-        //     }
-        // }
     }
 
     public void DrawBombs()

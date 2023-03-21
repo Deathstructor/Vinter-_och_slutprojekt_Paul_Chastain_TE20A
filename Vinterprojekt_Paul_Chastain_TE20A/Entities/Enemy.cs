@@ -2,13 +2,13 @@ using Raylib_cs;
 
 public class Enemy
 {
-    public static int maxAmount { get; set; } = 3;
-    public static int currentAmount { get; set; } = 0;
-    public int pos { get; set; }
-    public int spawnSide { get; set; }
-    public Depth depths { get; set; }
-    public Side sides { get; set; }
-    public bool leftSide { get; set; }
+    public static int MaxAmount { get; set; } = 3;
+    public static int CurrentAmount { get; set; } = 0;
+    public int Pos { get; set; }
+    public int SpawnSide { get; set; }
+    public Depth Depths { get; set; }
+    public Side Sides { get; set; }
+    public bool LeftSide { get; set; }
     public Texture2D submarine;
 
     private static Random rdm = new Random();
@@ -40,28 +40,28 @@ public class Enemy
         Image submarineIMG = Raylib.LoadImage(@"Images/submarine.png");
 
         // Anger vilken höjd ubåten ska spawna på baserat på det slumpade värdet.
-        if (depthLevel < 1) depths = Depth.one;
-        else if (depthLevel < 2) depths = Depth.two;
-        else if (depthLevel < 3) depths = Depth.three;
-        else if (depthLevel < 4) depths = Depth.four;
-        else if (depthLevel < 5) depths = Depth.five;
-        else if (depthLevel < 6) depths = Depth.six;
-        else if (depthLevel < 7) depths = Depth.seven;
+        if (depthLevel < 1) Depths = Depth.one;
+        else if (depthLevel < 2) Depths = Depth.two;
+        else if (depthLevel < 3) Depths = Depth.three;
+        else if (depthLevel < 4) Depths = Depth.four;
+        else if (depthLevel < 5) Depths = Depth.five;
+        else if (depthLevel < 6) Depths = Depth.six;
+        else if (depthLevel < 7) Depths = Depth.seven;
 
         // Anger vilken sida ubåten ska spawna på, samt "flippar" bilden horizontelt
         // om den spawnar på vänster sida.
         if (spawnSide == 0) 
         {
-            sides = Side.left;
-            leftSide = true;
+            Sides = Side.left;
+            LeftSide = true;
             Raylib.ImageFlipHorizontal(ref submarineIMG);
         }
         else if(spawnSide == 1) 
         {
-            sides = Side.right;
-            leftSide = false;
+            Sides = Side.right;
+            LeftSide = false;
         }
-        pos = (int) sides;
+        Pos = (int) Sides;
 
         // Skapar bilden för fienderna / ubåtarna.
         Raylib.ImageResize(ref submarineIMG, 100, 100);
@@ -72,9 +72,9 @@ public class Enemy
     // Renderar ubåten och dess förflyttning.
     public void Render()
     {
-        Raylib.DrawTexture(submarine, pos, (int) depths, Color.WHITE);
+        Raylib.DrawTexture(submarine, Pos, (int) Depths, Color.WHITE);
 
-        if (leftSide == true) pos++;
-        else if (leftSide == false) pos--;
+        if (LeftSide == true) Pos++;
+        else if (LeftSide == false) Pos--;
     }
 }
