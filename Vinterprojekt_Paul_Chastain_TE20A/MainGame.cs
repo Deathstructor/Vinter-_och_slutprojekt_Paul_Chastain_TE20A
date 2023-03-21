@@ -67,7 +67,7 @@ public static class MainGame
                 }
             }
 
-            if (p.weapon != null) p.weapon.Draw();
+            p.DrawBombs();
 
             if (Raylib.IsKeyPressed(KeyboardKey.KEY_ESCAPE))
             {

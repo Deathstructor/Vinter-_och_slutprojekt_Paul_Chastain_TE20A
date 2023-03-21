@@ -38,13 +38,13 @@ public class Player
         // Ritar ut en bomb om man trycker på mellanslag och lägger till den i listan "bombs".
         if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE))
         {
-            if (Weapon.isBig == false) 
+            if (Weapon.isBig == false)
             {
-                bombs.Add(weapon = new SmallBomb(pos));
+                bombs.Add(new SmallBomb(pos));
             }
-            else if (Weapon.isBig == true) 
+            else if (Weapon.isBig == true)
             {
-                bombs.Add(weapon = new BigBomb(pos));
+                bombs.Add(new BigBomb(pos));
             }
         }
 
@@ -55,5 +55,15 @@ public class Player
         //         bombs.RemoveAt(i);
         //     }
         // }
+    }
+
+    public void DrawBombs()
+    {
+        if (bombs is null || bombs.Count == 0) return;
+
+        foreach(Weapon b in bombs)
+        {
+            b.Draw();
+        }
     }
 }
