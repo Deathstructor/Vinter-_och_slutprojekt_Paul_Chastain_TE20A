@@ -9,11 +9,10 @@ public static class MainGame
 
         Enemy.CurrentAmount = 0;
 
-        List<Enemy> spawnedEnemies = new(); // En lista med alla fiender på skärmen
-
         while (true)
         {
             p.Update(); // Spelarens rörelse och bomber / vapen
+            Damage.Kill();
 
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Color.SKYBLUE);
@@ -26,42 +25,42 @@ public static class MainGame
             if (Enemy.CurrentAmount < Enemy.MaxAmount)
             {
                 Enemy.CurrentAmount++;
-                spawnedEnemies.Add(e = new());
-                Console.WriteLine(spawnedEnemies.Count);
+                Enemy.spawnedEnemies.Add(e = new());
+                Console.WriteLine(Enemy.spawnedEnemies.Count);
             }
 
             // Renderar varje fiende i listan med fiender och kollar var varje fiende befinner sig.
             // Om en fiende åker för långt utaför skärmen tas den bort, vilket kommer leda till att
             // en ny fiende skapas istället.
-            if (spawnedEnemies.Count > 0)
+            if (Enemy.spawnedEnemies.Count > 0)
             {
-                spawnedEnemies[0].Render();
+                Enemy.spawnedEnemies[0].Render();
 
-                if (spawnedEnemies[0].Pos < -210 || spawnedEnemies[0].Pos > 910)
+                if (Enemy.spawnedEnemies[0].Pos < -210 || Enemy.spawnedEnemies[0].Pos > 910)
                 {
-                    spawnedEnemies.RemoveAt(0);
+                    Enemy.spawnedEnemies.RemoveAt(0);
                     Console.WriteLine("Deleted [0]");
                     Enemy.CurrentAmount--;
                 }
             }
-            if (spawnedEnemies.Count > 1)
+            if (Enemy.spawnedEnemies.Count > 1)
             {
-                spawnedEnemies[1].Render();
+                Enemy.spawnedEnemies[1].Render();
 
-                if (spawnedEnemies[1].Pos < -210 || spawnedEnemies[1].Pos > 910)
+                if (Enemy.spawnedEnemies[1].Pos < -210 || Enemy.spawnedEnemies[1].Pos > 910)
                 {
-                    spawnedEnemies.RemoveAt(1);
+                    Enemy.spawnedEnemies.RemoveAt(1);
                     Console.WriteLine("Deleted [1]");
                     Enemy.CurrentAmount--;
                 }
             }
-            if (spawnedEnemies.Count > 2)
+            if (Enemy.spawnedEnemies.Count > 2)
             {
-                spawnedEnemies[2].Render();
+                Enemy.spawnedEnemies[2].Render();
 
-                if (spawnedEnemies[2].Pos < -210 || spawnedEnemies[2].Pos > 910)
+                if (Enemy.spawnedEnemies[2].Pos < -210 || Enemy.spawnedEnemies[2].Pos > 910)
                 {
-                    spawnedEnemies.RemoveAt(2);
+                    Enemy.spawnedEnemies.RemoveAt(2);
                     Console.WriteLine("Deleted [2]");
                     Enemy.CurrentAmount--;
                 }

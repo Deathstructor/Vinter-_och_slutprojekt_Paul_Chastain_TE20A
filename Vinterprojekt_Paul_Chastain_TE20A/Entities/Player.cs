@@ -5,7 +5,7 @@ public class Player
     public static int Pos { get; set; } = Raylib.GetScreenWidth() / 2 - 50;
     public Texture2D boat;
 
-    List<Weapon> bombs = new();
+    public static List<Weapon> bombs = new();
 
     public Player()
     {

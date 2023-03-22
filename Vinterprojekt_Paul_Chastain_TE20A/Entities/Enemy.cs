@@ -10,8 +10,11 @@ public class Enemy
     public Side Sides { get; set; }
     public bool LeftSide { get; set; }
     public Texture2D submarine;
+    public Rectangle enemyHitbox;
 
     private static Random rdm = new Random();
+
+    public static List<Enemy> spawnedEnemies = new(); // En lista med alla fiender på skärmen
 
     // Y-koordinaterna som ubåtarna kan spawna på.
     public enum Depth
@@ -73,6 +76,8 @@ public class Enemy
     public void Render()
     {
         Raylib.DrawTexture(submarine, Pos, (int) Depths, Color.WHITE);
+        enemyHitbox = new Rectangle(Pos, (int) Depths, 100, 100);
+        Raylib.DrawRectangleRec(enemyHitbox, Color.BLANK);
 
         if (LeftSide == true) Pos++;
         else if (LeftSide == false) Pos--;
