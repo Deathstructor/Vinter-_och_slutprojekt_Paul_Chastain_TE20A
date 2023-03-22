@@ -76,7 +76,7 @@ public class Enemy
     public void Render()
     {
         Raylib.DrawTexture(submarine, Pos, (int) Depths, Color.WHITE);
-        enemyHitbox = new Rectangle(Pos, (int) Depths, 100, 100);
+        enemyHitbox = new Rectangle(Pos, (int) Depths + 65, 100, 35);
         Raylib.DrawRectangleRec(enemyHitbox, Color.BLANK);
 
         if (LeftSide == true) Pos++;
