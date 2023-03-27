@@ -14,6 +14,6 @@ public class BigBomb : Weapon
     {
         base.Draw();
         Raylib.DrawCircle(PosX, PosY, Size, Color.RED);
-        PosY++;
+        PosY += Speed;
     }
 }

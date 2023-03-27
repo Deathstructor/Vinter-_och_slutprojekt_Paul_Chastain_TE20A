@@ -12,6 +12,7 @@ public class Damage
                 if (Raylib.CheckCollisionCircleRec(new Vector2(Player.bombs[i].PosX, Player.bombs[i].PosY), Player.bombs[i].Size, Enemy.spawnedEnemies[j].enemyHitbox))
                 {
                     Enemy.spawnedEnemies.RemoveAt(j);
+                    Player.bombs.RemoveAt(i);
                     Console.WriteLine($"Deleted [{j}]");
                     Enemy.CurrentAmount--;
                     j = 0;

@@ -4,7 +4,7 @@ public class SmallBomb : Weapon
 {
     public SmallBomb(int bombX)
     {
-        Speed = 2;
+        Speed = 3;
         Size = 4;
         PosX = bombX + 50;
     }
@@ -15,7 +15,7 @@ public class SmallBomb : Weapon
         base.Draw();
         Raylib.DrawCircle(PosX, PosY, Size, Color.RED);
 
-        PosY++;
+        PosY += Speed;
         return;
     }
 }
