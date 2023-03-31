@@ -5,7 +5,7 @@ public class BigBomb : Weapon
     public BigBomb(int bombX)
     {
         Speed = 1;
-        Size = 10;
+        Size = 15;
         PosX = bombX + 50;
     }
 

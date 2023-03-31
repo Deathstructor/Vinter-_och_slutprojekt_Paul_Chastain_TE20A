@@ -24,8 +24,7 @@ public class Enemy
         three = 350,
         four = 450,
         five = 550,
-        six = 650,
-        seven = 750
+        six = 650
     }
 
     // X-koordinaterns som ubåtarna kan spawna på.
@@ -37,7 +36,7 @@ public class Enemy
 
     public Enemy()
     {
-        int depthLevel = rdm.Next(7);
+        int depthLevel = rdm.Next(6);
         int spawnSide = rdm.Next(2);
 
         Image submarineIMG = Raylib.LoadImage(@"Images/submarine.png");
@@ -49,7 +48,6 @@ public class Enemy
         else if (depthLevel < 4) Depths = Depth.four;
         else if (depthLevel < 5) Depths = Depth.five;
         else if (depthLevel < 6) Depths = Depth.six;
-        else if (depthLevel < 7) Depths = Depth.seven;
 
         // Anger vilken sida ubåten ska spawna på, samt "flippar" bilden horizontelt
         // om den spawnar på vänster sida.

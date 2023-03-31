@@ -6,18 +6,20 @@ public static class MainGame
     {
         Player p = new();
         Enemy e = new();
+        HUD h = new();
 
         Enemy.CurrentAmount = 0;
 
         while (true)
         {
             p.Update(); // Spelarens rörelse och bomber / vapen
-            Damage.Kill();
+            Damage.Kill(); // Dödar fienden om man träffar
 
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Color.SKYBLUE);
             Raylib.DrawRectangle(0, 100, 700, 800, Color.DARKBLUE);
 
+            h.headsUpDisplay(); // En HUD med information.
             Raylib.DrawTexture(p.boat, Player.Pos, 0, Color.WHITE); // Ritar ut spelaren/båten
 
             // Kollar om antalet fiender har nått max antal fiender och lägger till fiender så

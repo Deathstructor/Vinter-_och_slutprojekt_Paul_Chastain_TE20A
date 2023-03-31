@@ -3,6 +3,7 @@ using Raylib_cs;
 public class Player
 {
     public static int Pos { get; set; } = Raylib.GetScreenWidth() / 2 - 50;
+    public static int Score { get; set; }
     public Texture2D boat;
 
     public static List<Weapon> bombs = new();
