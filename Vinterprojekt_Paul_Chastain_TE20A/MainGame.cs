@@ -1,3 +1,4 @@
+using System;
 using Raylib_cs;
 
 public static class MainGame
@@ -6,9 +7,14 @@ public static class MainGame
     {
         Player p = new();
         Enemy e = new();
+        SubmarineClass s = new();
+        DartClass d = new();
         HUD h = new();
 
+        Random dartSpawnChance = new Random();
+
         Enemy.CurrentAmount = 0;
+        Player.Score = 0;
 
         while (true)
         {
@@ -27,7 +33,8 @@ public static class MainGame
             if (Enemy.CurrentAmount < Enemy.MaxAmount)
             {
                 Enemy.CurrentAmount++;
-                Enemy.spawnedEnemies.Add(e = new());
+                if (dartSpawnChance.Next(4) == 0) { Enemy.spawnedEnemies.Add(d = new()); }
+                else { Enemy.spawnedEnemies.Add(s = new()); }
                 Console.WriteLine(Enemy.spawnedEnemies.Count);
             }
 
@@ -36,7 +43,7 @@ public static class MainGame
             // en ny fiende skapas istället.
             if (Enemy.spawnedEnemies.Count > 0)
             {
-                Enemy.spawnedEnemies[0].Render();
+                DartClass.spawnedEnemies[0].Render();
 
                 if (Enemy.spawnedEnemies[0].Pos < -210 || Enemy.spawnedEnemies[0].Pos > 910)
                 {
@@ -47,7 +54,7 @@ public static class MainGame
             }
             if (Enemy.spawnedEnemies.Count > 1)
             {
-                Enemy.spawnedEnemies[1].Render();
+                SubmarineClass.spawnedEnemies[1].Render();
 
                 if (Enemy.spawnedEnemies[1].Pos < -210 || Enemy.spawnedEnemies[1].Pos > 910)
                 {
@@ -58,7 +65,7 @@ public static class MainGame
             }
             if (Enemy.spawnedEnemies.Count > 2)
             {
-                Enemy.spawnedEnemies[2].Render();
+                SubmarineClass.spawnedEnemies[2].Render();
 
                 if (Enemy.spawnedEnemies[2].Pos < -210 || Enemy.spawnedEnemies[2].Pos > 910)
                 {

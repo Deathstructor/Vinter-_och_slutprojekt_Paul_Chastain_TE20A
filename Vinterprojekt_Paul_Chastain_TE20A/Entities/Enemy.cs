@@ -5,12 +5,14 @@ public class Enemy
     public static int MaxAmount { get; set; } = 3;
     public static int CurrentAmount { get; set; } = 0;
     public int Pos { get; set; }
-    public int SpawnSide { get; set; }
-    public Depth Depths { get; set; }
-    public Side Sides { get; set; }
-    public bool LeftSide { get; set; }
-    public Texture2D submarine;
+    protected int SpawnSide { get; set; }
+    protected Depth Depths { get; set; }
+    protected Side Sides { get; set; }
+    protected bool LeftSide { get; set; }
     public Rectangle enemyHitbox;
+    protected Image submarineIMG = Raylib.LoadImage(@"Images/submarine.png");
+    protected Image dartIMG = Raylib.LoadImage(@"Images/dart.png");
+
 
     private static Random rdm = new Random();
 
@@ -39,7 +41,6 @@ public class Enemy
         int depthLevel = rdm.Next(6);
         int spawnSide = rdm.Next(2);
 
-        Image submarineIMG = Raylib.LoadImage(@"Images/submarine.png");
 
         // Anger vilken höjd ubåten ska spawna på baserat på det slumpade värdet.
         if (depthLevel < 1) Depths = Depth.one;
@@ -56,6 +57,7 @@ public class Enemy
             Sides = Side.left;
             LeftSide = true;
             Raylib.ImageFlipHorizontal(ref submarineIMG);
+            Raylib.ImageFlipHorizontal(ref dartIMG);
         }
         else if(spawnSide == 1) 
         {
@@ -63,21 +65,8 @@ public class Enemy
             LeftSide = false;
         }
         Pos = (int) Sides;
-
-        // Skapar bilden för fienderna / ubåtarna.
-        Raylib.ImageResize(ref submarineIMG, 100, 100);
-        submarine = Raylib.LoadTextureFromImage(submarineIMG);
-        Raylib.UnloadImage(submarineIMG);
     }
 
-    // Renderar ubåten och dess förflyttning.
-    public void Render()
-    {
-        Raylib.DrawTexture(submarine, Pos, (int) Depths, Color.WHITE);
-        enemyHitbox = new Rectangle(Pos, (int) Depths + 65, 100, 35);
-        Raylib.DrawRectangleRec(enemyHitbox, Color.BLANK);
-
-        if (LeftSide == true) Pos++;
-        else if (LeftSide == false) Pos--;
-    }
+    // idk man
+    public virtual void Render(){}
 }
