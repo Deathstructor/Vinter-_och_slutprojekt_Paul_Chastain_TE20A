@@ -14,11 +14,19 @@ public class Damage
                 // Kollar om en bomb och en fiende kolliderar med varandra.
                 if (Raylib.CheckCollisionCircleRec(new Vector2(Player.bombs[i].PosX, Player.bombs[i].PosY), Player.bombs[i].Size, Enemy.spawnedEnemies[j].enemyHitbox))
                 {
+                    if (Enemy.spawnedEnemies[j].isDart == false)
+                    {
+                        Player.Score += 5; // Lägger till poäng för att ha dödat en submarine.
+                    }
+                    else if (Enemy.spawnedEnemies[j].isDart == true)
+                    {
+                        Player.Score += 15; // Lägger till poäng för att ha dödat en dart.
+                    }
+
                     Enemy.spawnedEnemies.RemoveAt(j); // Tar bort fienden
                     Player.bombs.RemoveAt(i); // Tar bort bomben
                     Console.WriteLine($"Deleted [{j}]");
                     Enemy.CurrentAmount--;
-                    Player.Score += 5; // Lägger till poänd för att ha dödat en fiende.
                     j = 0; // Sätter j på 0 så att den inte får tal som är större än listans index när en fiende tas bort.
                 }
             }

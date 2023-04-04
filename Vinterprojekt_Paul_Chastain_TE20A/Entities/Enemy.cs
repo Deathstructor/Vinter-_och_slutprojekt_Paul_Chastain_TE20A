@@ -12,6 +12,7 @@ public class Enemy
     public Rectangle enemyHitbox;
     protected Image submarineIMG = Raylib.LoadImage(@"Images/submarine.png");
     protected Image dartIMG = Raylib.LoadImage(@"Images/dart.png");
+    public bool isDart { get; set; }
 
 
     private static Random rdm = new Random();

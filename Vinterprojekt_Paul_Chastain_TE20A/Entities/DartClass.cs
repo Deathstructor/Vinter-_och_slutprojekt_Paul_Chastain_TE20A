@@ -10,6 +10,8 @@ public class DartClass : Enemy
         Raylib.ImageResize(ref dartIMG, 75, 75);
         dart = Raylib.LoadTextureFromImage(dartIMG);
         Raylib.UnloadImage(dartIMG);
+
+        isDart = true;
     }
 
     // Renderar ubåten och dess förflyttning

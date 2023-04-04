@@ -10,6 +10,8 @@ public class SubmarineClass : Enemy
         Raylib.ImageResize(ref submarineIMG, 100, 100);
         submarine = Raylib.LoadTextureFromImage(submarineIMG);
         Raylib.UnloadImage(submarineIMG);
+
+        isDart = false;
     }
 
     // Renderar ubåten och dess förflyttning
