@@ -48,6 +48,7 @@ public class Player
         }
     }
 
+    // Funktion för att rita ut bomber
     public void DrawBombs()
     {
         if (bombs is null || bombs.Count == 0) return;

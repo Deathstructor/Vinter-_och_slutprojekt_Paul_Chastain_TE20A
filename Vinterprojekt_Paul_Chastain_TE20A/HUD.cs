@@ -8,6 +8,6 @@ public class HUD
         Raylib.DrawRectangle(0, 800, 700, 100, Color.DARKBLUE);
         Raylib.DrawLine(0, 800, 700, 800, Color.WHITE);
 
-        Raylib.DrawText($"Score: {Player.Score}", 50, 830, 50, Color.WHITE);
+        Raylib.DrawText($"Score: {Player.Score}", 50, 830, 50, Color.WHITE); // Ritar ut spelaren poäng längst ner i rutan.
     }
 }

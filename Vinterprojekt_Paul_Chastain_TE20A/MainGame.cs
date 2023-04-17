@@ -75,8 +75,9 @@ public static class MainGame
                 }
             }
 
-            p.DrawBombs();
+            p.DrawBombs(); // Ritar ut bomberna
 
+            // Går tillbaka till huvudmenyn om man trycker på ESC (tanken är att senare fixa en pausmeny när man trycker på ESC)
             if (Raylib.IsKeyPressed(KeyboardKey.KEY_ESCAPE))
             {
                 return;
